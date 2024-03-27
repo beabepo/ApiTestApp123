@@ -81,22 +81,22 @@ namespace TodoApiTest.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> PostTodoItem(TodoItemDTO todoDTO)
         {
-           var todoItem = new TodoItem
-           {
-            IsComplete = todoDTO.IsComplete,
-            Name = todoDTO.Name
-           };
+            var todoItem = new TodoItem
+            {
+                IsComplete = todoDTO.IsComplete,
+                Name = todoDTO.Name
+            };
 
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
             // return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
-             // nameOf is used to avoid hardcoding the action name 
+            // nameOf is used to avoid hardcoding the action name 
             return CreatedAtAction(
                 nameof(GetTodoItem),
                 new { id = todoItem.Id },
                 ItemToDTO(todoItem));
-           
+
         }
 
         // DELETE: api/TodoItems/5
@@ -120,7 +120,7 @@ namespace TodoApiTest.Controllers
             return _context.TodoItems.Any(e => e.Id == id);
         }
 
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) => 
+        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
         new TodoItemDTO
         {
             Id = todoItem.Id,
