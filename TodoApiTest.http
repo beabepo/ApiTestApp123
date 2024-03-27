@@ -1,0 +1,6 @@
+@TodoApiTest_HostAddress = http://localhost:5217
+
+GET {{TodoApiTest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
